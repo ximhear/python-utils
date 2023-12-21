@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # 파일 업로드를 위한 설정
 UPLOAD_FOLDER = '/Users/gzonelee/PycharmProjects/pythonProject1/uploads'  # 파일을 저장할 경로
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}  # 허용할 파일 확장자
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'heic'}  # 허용할 파일 확장자
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
