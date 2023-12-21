@@ -30,6 +30,13 @@ def convert_all_heic_to_jpg(folder_path):
 
 
 def convert_heic_to_jpg_with_imagemagick(input_folder, width=1024):
+    """
+    Convert HEIC files to JPG format using ImageMagick.
+
+    :param input_folder: The path to the folder containing HEIC files.
+    :param width: The desired width of the output JPG files. Defaults to 1024.
+    :return: None
+    """
     files = [f for f in os.listdir(input_folder) if f.lower().endswith('.heic')]
     for file in files:
         input_path = os.path.join(input_folder, file)
