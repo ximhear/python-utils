@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from werkzeug.utils import secure_filename
 import os
 
@@ -57,6 +57,17 @@ def upload_file():
             "creation_date": creation_date,
             "saved_file": filename
         })
+
+
+@app.route('/download/<fileNo>')
+def download_file(fileNo):
+    if fileNo == '1':
+        file_path = '/Users/gzonelee/PycharmProjects/pythonProject1/uploads/About_Threads_and_Threadgroups_Apple_Developer_Documentation.pdf'
+    elif fileNo == '2':
+        file_path = '/Users/gzonelee/PycharmProjects/pythonProject1/uploads/colored_image_10.png'
+    else:
+        file_path = '/Users/gzonelee/PycharmProjects/pythonProject1/uploads/image.jpg'
+    return send_file(file_path, as_attachment=True)
 
 
 if __name__ == "__main__":
