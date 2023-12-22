@@ -23,7 +23,7 @@ def api_endpoint():
         return jsonify({"message": "GET request received"})
 
 
-@app.route('/api/send/<guestNo>/image/<imageNo>')
+@app.route('/api/send/<guestNo>/image/<imageNo>', methods=['GET', 'POST'])
 def handle_request(guestNo, imageNo):
     # guestNo와 imageNo를 사용하여 필요한 작업 수행
     # 예를 들어, 데이터베이스 조회, 로직 처리 등
@@ -57,6 +57,7 @@ def upload_file():
             "creation_date": creation_date,
             "saved_file": filename
         })
+
 
 if __name__ == "__main__":
     app.run(debug=True)
