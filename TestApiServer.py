@@ -23,6 +23,15 @@ def api_endpoint():
         return jsonify({"message": "GET request received"})
 
 
+@app.route('/api/send/<guestNo>/image/<imageNo>')
+def handle_request(guestNo, imageNo):
+    # guestNo와 imageNo를 사용하여 필요한 작업 수행
+    # 예를 들어, 데이터베이스 조회, 로직 처리 등
+
+    # 응답 반환
+    return jsonify({"guestNo": guestNo, "imageNo": imageNo})
+
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     # 텍스트 필드 데이터 접근
