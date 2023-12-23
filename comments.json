@@ -1,0 +1,84 @@
+[
+    {
+        "fltGodt": "20231223",
+        "fltCarr": "AA",
+        "fltNo": "100",
+        "fltFleg": "Scheduled",
+        "fltDepAp": "JFK",
+        "ofpNo": "OFP123",
+        "messageId": 1,
+        "commentId": 101,
+        "writer": "User1",
+        "content": "Great flight experience.",
+        "createdDate": 1671801600.0,
+        "commentFileList": [
+            {
+              "fltGodt": "20231223",
+                "fltCarr": "AA",
+                "fltNo": "100",
+                "fltFleg": "Scheduled",
+                "fltDepAp": "JFK",
+                "ofpNo": "OFP123",
+                "messageId": 1,
+                "commentId": 101,
+                "deleteFlag": "N",
+                "createdDate": 1671801600.0,
+                "deletedDate": 0.0,
+                "fileInfo": {
+                    "fileNo": 1001,
+                    "originalName": "comment_image.jpg",
+                    "saveName": "comment1_image.jpg",
+                    "fileSize": 1024
+                }
+            }
+        ]
+    },
+    {
+      "fltGodt": "20231223",
+        "fltCarr": "BA",
+        "fltNo": "200",
+        "fltFleg": "Delayed",
+        "fltDepAp": "LHR",
+        "ofpNo": "OFP456",
+        "messageId": 2,
+        "commentId": 202,
+        "writer": "User2",
+        "content": "Flight was delayed but service was good.",
+        "createdDate": 1671888000.0,
+        "commentFileList": null
+    },
+    {
+      "fltGodt": "20231223",
+        "fltCarr": "CA",
+        "fltNo": "300",
+        "fltFleg": "On Time",
+        "fltDepAp": "PEK",
+        "ofpNo": "OFP789",
+        "messageId": 3,
+        "commentId": 303,
+        "writer": "User3",
+        "content": "Excellent onboard amenities.",
+        "createdDate": 1671974400.0,
+        "commentFileList": [
+            {
+              "fltGodt": "2023-12-25T18:00:00Z",
+                "fltCarr": "CA",
+                "fltNo": "300",
+                "fltFleg": "On Time",
+                "fltDepAp": "PEK",
+                "ofpNo": "OFP789",
+                "messageId": 3,
+                "commentId": 303,
+                "deleteFlag": "Y",
+                "createdDate": 1671974400.0,
+                "deletedDate": 1671974500.0,
+                "fileInfo": {
+                    "fileNo": 3001,
+                    "originalName": "feedback_doc.pdf",
+                    "saveName": "comment3_doc.pdf",
+                    "fileSize": 2048
+                }
+            }
+        ]
+    }
+]
