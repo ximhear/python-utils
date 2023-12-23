@@ -1,0 +1,104 @@
+[
+    {
+        "fltGodt": "2023-12-23T12:00:00Z",
+        "fltCarr": "AA",
+        "fltNo": "100",
+        "fltFleg": "Scheduled",
+        "fltDepAp": "JFK",
+        "ofpNo": "OFP123",
+        "messageId": 1,
+        "category": "General",
+        "receiver": "Pilot",
+        "writer": "Dispatcher",
+        "content": "Flight briefing for today.",
+        "createdDate": 1671801600.0,
+        "messageFileInfo": [
+            {
+                "fltGodt": "2023-12-23T12:00:00Z",
+                "fltCarr": "AA",
+                "fltNo": "100",
+                "fltFleg": "Scheduled",
+                "fltDepAp": "JFK",
+                "ofpNo": "OFP123",
+                "messageId": 1,
+                "deleteFlag": "N",
+                "createdDate": 1671801600.0,
+                "deletedDate": 0.0,
+                "fileInfo": {
+                    "fileNo": 101,
+                    "originalName": "briefing.pdf",
+                    "saveName": "briefing_123.pdf",
+                    "fileSize": 2048
+                }
+            }
+        ]
+    },
+    {
+        "fltGodt": "2023-12-24T15:00:00Z",
+        "fltCarr": "BA",
+        "fltNo": "200",
+        "fltFleg": "Delayed",
+        "fltDepAp": "LHR",
+        "ofpNo": "OFP456",
+        "messageId": 2,
+        "category": "Urgent",
+        "receiver": "Crew",
+        "writer": "Operations",
+        "content": "Flight delay notification.",
+        "createdDate": 1671888000.0,
+        "messageFileInfo": [
+            {
+                "fltGodt": "2023-12-24T15:00:00Z",
+                "fltCarr": "BA",
+                "fltNo": "200",
+                "fltFleg": "Delayed",
+                "fltDepAp": "LHR",
+                "ofpNo": "OFP456",
+                "messageId": 2,
+                "deleteFlag": "N",
+                "createdDate": 1671888000.0,
+                "deletedDate": 0.0,
+                "fileInfo": {
+                    "fileNo": 202,
+                    "originalName": "notification.pdf",
+                    "saveName": "notification_456.pdf",
+                    "fileSize": 1024
+                }
+            }
+        ]
+    },
+    {
+        "fltGodt": "2023-12-25T18:00:00Z",
+        "fltCarr": "CA",
+        "fltNo": "300",
+        "fltFleg": "On Time",
+        "fltDepAp": "PEK",
+        "ofpNo": "OFP789",
+        "messageId": 3,
+        "category": "Information",
+        "receiver": "Ground Staff",
+        "writer": "Management",
+        "content": "Weather forecast for route.",
+        "createdDate": 1671974400.0,
+        "messageFileInfo": [
+            {
+                "fltGodt": "2023-12-25T18:00:00Z",
+                "fltCarr": "CA",
+                "fltNo": "300",
+                "fltFleg": "On Time",
+                "fltDepAp": "PEK",
+                "ofpNo": "OFP789",
+                "messageId": 3,
+                "deleteFlag": "N",
+                "createdDate": 1671974400.0,
+                "deletedDate": 0.0,
+                "fileInfo": {
+                    "fileNo": 303,
+                    "originalName": "forecast.pdf",
+                    "saveName": "forecast_789.pdf",
+                    "fileSize": 3072
+                }
+            }
+        ]
+    }
+]

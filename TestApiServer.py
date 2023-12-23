@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_file
 from werkzeug.utils import secure_filename
 import os
+import json
 
 app = Flask(__name__)
 
@@ -68,6 +69,20 @@ def download_file(fileNo):
     else:
         file_path = '/Users/gzonelee/PycharmProjects/pythonProject1/uploads/image.jpg'
     return send_file(file_path, as_attachment=True)
+
+
+@app.route('/v1/ofp/<legIdentifier>/message', methods=['GET'])
+def get_messages(legIdentifier):
+    category = request.args.get('category', default=None, type=str)
+    app.logger.info(f'Received category: {category}')
+    data = load_json_data('messages.json')
+    return jsonify(data)
+
+
+def load_json_data(filename):
+    with open(filename) as file:
+        data = json.load(file)
+    return data
 
 
 if __name__ == "__main__":
