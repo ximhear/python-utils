@@ -76,7 +76,12 @@ def get_messages(legIdentifier):
     category = request.args.get('category', default=None, type=str)
     app.logger.info(f'Received category: {category}')
     data = load_json_data('messages.json')
-    return jsonify(data)
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': data
+    }
+    return jsonify(response)
 
 
 def load_json_data(filename):
