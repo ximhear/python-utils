@@ -73,7 +73,7 @@ def download_file(fileNo):
     return send_file(file_path, as_attachment=True)
 
 
-@app.route('/v1/ofp/<legIdentifier>/message', methods=['GET'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/message', methods=['GET'])
 def get_messages(legIdentifier):
     category = request.args.get('category', default=None, type=str)
     app.logger.info(f'Received category: {category}')
@@ -100,7 +100,7 @@ def get_messages(legIdentifier):
     return jsonify(response)
 
 
-@app.route('/v1/ofp/<legIdentifier>/message', methods=['POST'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/message', methods=['POST'])
 def send_messages(legIdentifier):
     data = request.json
     app.logger.info(f'Received data: {data}')
@@ -123,7 +123,7 @@ def send_messages(legIdentifier):
     return jsonify(response)
 
 
-@app.route('/v1/ofp/<legIdentifier>/comment', methods=['GET'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/comment', methods=['GET'])
 def get_comments(legIdentifier):
     messageId = request.args.get('messageId', default=None, type=str)
     app.logger.info(f'Received category: {messageId}')
@@ -136,8 +136,76 @@ def get_comments(legIdentifier):
     return jsonify(response)
 
 
-@app.route('/v1/ofp/<legIdentifier>/message/<messageId>/file', methods=['POST'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/file', methods=['POST'])
 def upload_message_file(legIdentifier, messageId):
+    # 텍스트 필드 데이터 접근
+    # file_name = request.form.get('file-url')  # 파일 이름 필드
+    # creation_date = request.form.get('date')  # 생성일 필드
+
+    # 로그 기록
+    # app.logger.info(f'Received file_name: {file_name}, creation_date: {creation_date}')
+
+    # 파일 데이터 접근
+    if 'file' not in request.files:
+        return jsonify({"message": "No file part"})
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"message": "No selected file"})
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        min_val = 1
+        max_val = 2 ** 63 - 1
+        # 무작위 64비트 정수 생성
+        random_64bit_int = random.randint(min_val, max_val)
+        # 현재 날짜와 시간을 가져옵니다.
+        current_datetime = datetime.now()
+        # datetime을 타임스탬프(정수)로 변환합니다.
+        timestamp = int(datetime.timestamp(current_datetime))
+        response = {
+            'status': 0,
+            'message': 'success',
+            'data': {
+                'fileNo': random_64bit_int,
+                'createdDate': timestamp
+            }
+        }
+        return jsonify(response)
+
+
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/<fileNo>', methods=['GET'])
+def download_message_file(legIdentifier, messageId, fileNo):
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], "aaa.pdf")
+    return send_file(file_path, as_attachment=True)
+
+
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/comment', methods=['POST'])
+def send_comment(legIdentifier, messageId):
+    data = request.json
+    app.logger.info(f'Received data: {data}')
+    min_val = 1
+    max_val = 2 ** 63 - 1
+    # 무작위 64비트 정수 생성
+    random_64bit_int = random.randint(min_val, max_val)
+    # 현재 날짜와 시간을 가져옵니다.
+    current_datetime = datetime.now()
+    # datetime을 타임스탬프(정수)로 변환합니다.
+    timestamp = int(datetime.timestamp(current_datetime))
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': {
+            'commentId': random_64bit_int,
+            'createdDate': timestamp
+        }
+    }
+    return jsonify(response)
+
+
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/comment/<commentId>/file', methods=['POST'])
+def upload_comment_file(legIdentifier, messageId, commentId):
     # 텍스트 필드 데이터 접근
     # file_name = request.form.get('file-url')  # 파일 이름 필드
     # creation_date = request.form.get('date')  # 생성일 필드
