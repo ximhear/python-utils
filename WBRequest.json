@@ -10,7 +10,8 @@
         "category": "W&B REQUEST",
         "receiver": "Pilot",
         "writer": "Dispatcher",
-        "content": "Flight briefing for today.",
+        "title": "title0",
+        "content": "{\"title\":\"w&b request 0\",\"dueTo\":\"0120\"}",
         "createdDate": 1671801600.0,
         "messageFileInfo": [
             {
@@ -44,7 +45,8 @@
         "category": "W&B REQUEST",
         "receiver": "Crew",
         "writer": "Operations",
-        "content": "Flight delay notification.",
+        "title": "title1",
+        "content": "{\"title\":\"w&b request 1\",\"dueTo\":\"1120\"}",
         "createdDate": 1671888000.0,
         "messageFileInfo": [
             {
@@ -78,7 +80,8 @@
         "category": "W&B REQUEST",
         "receiver": "Ground Staff",
         "writer": "Management",
-        "content": "Weather forecast for route.",
+        "title": "title2",
+        "content": "{\"title\":\"w&b request 2\",\"dueTo\":\"2120\"}",
         "createdDate": 1671974400.0,
         "messageFileInfo": [
             {

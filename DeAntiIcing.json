@@ -10,7 +10,8 @@
         "category": "DE/ANTI ICING",
         "receiver": "Pilot",
         "writer": "Dispatcher",
-        "content": "Flight briefing for today.",
+        "title": "title0",
+        "content": "{\"title\":\"de/anti icing 0\",\"request\":\"request 0\"}",
         "createdDate": 1671801600.0,
         "messageFileInfo": [
             {
@@ -44,7 +45,8 @@
         "category": "DE/ANTI ICING",
         "receiver": "Crew",
         "writer": "Operations",
-        "content": "Flight delay notification.",
+        "title": "title1",
+        "content": "{\"title\":\"de/anti icing 1\",\"request\":\"request 1\"}",
         "createdDate": 1671888000.0,
         "messageFileInfo": [
             {
@@ -78,7 +80,8 @@
         "category": "DE/ANTI ICING",
         "receiver": "Ground Staff",
         "writer": "Management",
-        "content": "Weather forecast for route.",
+        "title": "title2",
+        "content": "{\"title\":\"de/anti icing 2\",\"request\":\"request 2\"}",
         "createdDate": 1671974400.0,
         "messageFileInfo": [
             {

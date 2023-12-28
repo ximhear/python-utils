@@ -10,7 +10,8 @@
         "category": "ETD REPORT",
         "receiver": "Pilot",
         "writer": "Dispatcher",
-        "content": "Flight briefing for today.",
+        "title": "title0",
+        "content": "{\"title\":\"etd please 0\",\"expectedEtd\":\"aaa\",\"dueTo\":\"1230\"}",
         "createdDate": 1671801600.0,
         "messageFileInfo": [
             {
@@ -44,7 +45,8 @@
         "category": "ETD REPORT",
         "receiver": "Crew",
         "writer": "Operations",
-        "content": "Flight delay notification.",
+        "title": "title1",
+        "content": "{\"title\":\"etd please 1\",\"expectedEtd\":\"aaa\",\"dueTo\":\"1230\"}",
         "createdDate": 1671888000.0,
         "messageFileInfo": [
             {
@@ -78,7 +80,8 @@
         "category": "ETD REPORT",
         "receiver": "Ground Staff",
         "writer": "Management",
-        "content": "Weather forecast for route.",
+        "title": "title2",
+        "content": "{\"title\":\"etd please 2\",\"expectedEtd\":\"aaa\",\"dueTo\":\"1230\"}",
         "createdDate": 1671974400.0,
         "messageFileInfo": [
             {

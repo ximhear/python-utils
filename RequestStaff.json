@@ -10,7 +10,8 @@
         "category": "REQUEST STAFF",
         "receiver": "Pilot",
         "writer": "Dispatcher",
-        "content": "Flight briefing for today.",
+        "title": "title0",
+        "content": "{\"title\":\"staff more please\",\"request\":\"aaa\",\"dueTo\":\"1230\"}",
         "createdDate": 1671801600.0,
         "messageFileInfo": [
             {
@@ -44,7 +45,8 @@
         "category": "REQUEST STAFF",
         "receiver": "Crew",
         "writer": "Operations",
-        "content": "Flight delay notification.",
+        "title": "title1",
+        "content": "{\"title\":\"staff please\",\"request\":\"aaa\",\"dueTo\":\"1230\"}",
         "createdDate": 1671888000.0,
         "messageFileInfo": [
             {
@@ -78,8 +80,9 @@
         "category": "REQUEST STAFF",
         "receiver": "Ground Staff",
         "writer": "Management",
-        "content": "Weather forecast for route.",
-        "createdDate": 1671974400.0,
+        "title": "title2",
+        "content": "{\"title\":\"staff 2 please\",\"request\":\"aaa\",\"dueTo\":\"1230\"}",
+        "createdDate": 1703435155.034461,
         "messageFileInfo": [
             {
                 "fltGodt": "2023-12-25T18:00:00Z",

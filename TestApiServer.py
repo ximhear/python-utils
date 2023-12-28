@@ -80,13 +80,13 @@ def get_messages(legIdentifier):
     data = ""
     if category == "REQUEST STAFF":
         data = load_json_data('RequestStaff.json')
-    elif category == "W&B INQUIRY":
+    elif category == "Load Sheet INQUIRY":
         data = load_json_data('WBInquiry.json')
     elif category == "ETD REPORT":
         data = load_json_data('EtdReport.json')
     elif category == "EMERGENCY":
         data = load_json_data('Emergency.json')
-    elif category == "W&B REQUEST":
+    elif category == "Load Sheet REQUEST":
         data = load_json_data('WBRequest.json')
     elif category == "FUEL REQUEST":
         data = load_json_data('FuelRequest.json')

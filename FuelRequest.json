@@ -10,7 +10,8 @@
         "category": "FUEL REQUEST",
         "receiver": "Pilot",
         "writer": "Dispatcher",
-        "content": "Flight briefing for today.",
+        "title": "title0",
+        "content": "{\"title\":\"fuel request 0\",\"dueTo\":\"2120\",\"extraFuel\":\"300\"}",
         "createdDate": 1671801600.0,
         "messageFileInfo": [
             {
@@ -44,7 +45,8 @@
         "category": "FUEL REQUEST",
         "receiver": "Crew",
         "writer": "Operations",
-        "content": "Flight delay notification.",
+        "title": "title1",
+        "content": "{\"title\":\"fuel request 1\",\"dueTo\":\"0820\",\"extraFuel\":\"900\"}",
         "createdDate": 1671888000.0,
         "messageFileInfo": [
             {
@@ -78,7 +80,8 @@
         "category": "FUEL REQUEST",
         "receiver": "Ground Staff",
         "writer": "Management",
-        "content": "Weather forecast for route.",
+        "title": "title2",
+        "content": "{\"title\":\"fuel request 2\",\"dueTo\":\"2320\",\"extraFuel\":\"1900\"}",
         "createdDate": 1671974400.0,
         "messageFileInfo": [
             {
