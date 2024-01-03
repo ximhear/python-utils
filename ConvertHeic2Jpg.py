@@ -46,4 +46,4 @@ def convert_heic_to_jpg_with_imagemagick(input_folder, width=1024):
 
 
 # Example usage
-convert_heic_to_jpg_with_imagemagick('/Users/gzonelee/PycharmProjects/pythonProject1')
+convert_heic_to_jpg_with_imagemagick('/Users/gzonelee/PycharmProjects/pythonProject1/heic')

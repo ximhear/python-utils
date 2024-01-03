@@ -243,6 +243,52 @@ def upload_comment_file(legIdentifier, messageId, commentId):
         return jsonify(response)
 
 
+@app.route('/uploadfiles', methods=['POST'])
+def upload_files():
+    # JSON 데이터 접근
+    json_data = request.form.get('json_data')
+    if json_data:
+        # 로그 기록
+        app.logger.info(f'Received JSON data: {json_data}')
+        # JSON 문자열을 파이썬 딕셔너리로 변환 (예시)
+        # data = json.loads(json_data)
+
+    # 여러 파일 데이터 접근
+    files = request.files.getlist('file')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
+
+    if not files or files[0].filename == '':
+        return jsonify({
+        'status': 1,
+        'message': 'error'
+        })
+
+    file_urls = []
+    for file in files:
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            app.logger.info(f'file: {file.filename}')
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            file_urls.append(file_path)
+
+    min_val = 1
+    max_val = 2 ** 63 - 1
+    # 무작위 64비트 정수 생성
+    random_64bit_int = random.randint(min_val, max_val)
+    # 현재 날짜와 시간을 가져옵니다.
+    current_datetime = datetime.now()
+    # datetime을 타임스탬프(정수)로 변환합니다.
+    timestamp = int(datetime.timestamp(current_datetime))
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': {
+            'fileNo': random_64bit_int,
+            'createdDate': timestamp,
+        }
+    }
+    return jsonify(response)
+
 def load_json_data(filename):
     with open(filename) as file:
         data = json.load(file)
