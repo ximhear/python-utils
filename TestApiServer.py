@@ -101,7 +101,7 @@ def get_messages(legIdentifier):
 
 
 @app.route('/eofp/v1/ofp/<legIdentifier>/message', methods=['POST'])
-def send_messages(legIdentifier):
+def send_message(legIdentifier):
     data = request.json
     app.logger.info(f'Received data: {data}')
     min_val = 1
@@ -118,6 +118,65 @@ def send_messages(legIdentifier):
         'data': {
             'messageId': random_64bit_int,
             'createdDate': timestamp
+        }
+    }
+    return jsonify(response)
+
+
+@app.route('/eofp/v1/ofp/<legIdentifier>/messageattaches', methods=['POST'])
+def send_message_with_files(legIdentifier):
+    # JSON 데이터 접근
+    json_data = request.form.get('json')
+    if json_data:
+        # 로그 기록
+        app.logger.info(f'Received JSON data: {json_data}')
+        # JSON 문자열을 파이썬 딕셔너리로 변환 (예시)
+        # data = json.loads(json_data)
+
+    # 여러 파일 데이터 접근
+    files = request.files.getlist('file')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
+
+    if not files or files[0].filename == '':
+        return jsonify({
+            'status': 1,
+            'message': 'no file error'
+        })
+
+    min_val = 1
+    max_val = 2 ** 63 - 1
+
+    messageFiles = []
+    for file in files:
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            app.logger.info(f'file: {file.filename}')
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            # 무작위 64비트 정수 생성
+            random_64bit_int = random.randint(min_val, max_val)
+            # 현재 날짜와 시간을 가져옵니다.
+            current_datetime = datetime.now()
+            # datetime을 타임스탬프(정수)로 변환합니다.
+            timestamp = int(datetime.timestamp(current_datetime))
+            messageFiles.append({
+                'fileNo': random_64bit_int,
+                'createdDate': timestamp,
+                'fileName': filename
+            })
+
+    # 무작위 64비트 정수 생성
+    random_64bit_int = random.randint(min_val, max_val)
+    # 현재 날짜와 시간을 가져옵니다.
+    current_datetime = datetime.now()
+    # datetime을 타임스탬프(정수)로 변환합니다.
+    timestamp = int(datetime.timestamp(current_datetime))
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': {
+            'messageId': random_64bit_int,
+            'createdDate': timestamp,
+            'messageFiles': messageFiles
         }
     }
     return jsonify(response)
@@ -204,6 +263,65 @@ def send_comment(legIdentifier, messageId):
     return jsonify(response)
 
 
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/commentattaches', methods=['POST'])
+def send_comment_with_file(legIdentifier, messageId):
+    # JSON 데이터 접근
+    json_data = request.form.get('json')
+    if json_data:
+        # 로그 기록
+        app.logger.info(f'Received JSON data: {json_data}')
+        # JSON 문자열을 파이썬 딕셔너리로 변환 (예시)
+        # data = json.loads(json_data)
+
+    # 여러 파일 데이터 접근
+    files = request.files.getlist('file')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
+
+    if not files or files[0].filename == '':
+        return jsonify({
+            'status': 1,
+            'message': 'no file error'
+        })
+
+    min_val = 1
+    max_val = 2 ** 63 - 1
+
+    commentFiles = []
+    for file in files:
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            app.logger.info(f'file: {file.filename}')
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            # 무작위 64비트 정수 생성
+            random_64bit_int = random.randint(min_val, max_val)
+            # 현재 날짜와 시간을 가져옵니다.
+            current_datetime = datetime.now()
+            # datetime을 타임스탬프(정수)로 변환합니다.
+            timestamp = int(datetime.timestamp(current_datetime))
+            commentFiles.append({
+                'fileNo': random_64bit_int,
+                'createdDate': timestamp,
+                'fileName': filename
+            })
+
+    # 무작위 64비트 정수 생성
+    random_64bit_int = random.randint(min_val, max_val)
+    # 현재 날짜와 시간을 가져옵니다.
+    current_datetime = datetime.now()
+    # datetime을 타임스탬프(정수)로 변환합니다.
+    timestamp = int(datetime.timestamp(current_datetime))
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': {
+            'commentId': random_64bit_int,
+            'createdDate': timestamp,
+            'commentFiles': commentFiles
+        }
+    }
+    return jsonify(response)
+
+
 @app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/comment/<commentId>/file', methods=['POST'])
 def upload_comment_file(legIdentifier, messageId, commentId):
     # 텍스트 필드 데이터 접근
@@ -241,6 +359,12 @@ def upload_comment_file(legIdentifier, messageId, commentId):
             }
         }
         return jsonify(response)
+
+
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/comment/<commentId>/<fileNo>', methods=['GET'])
+def download_comment_file(legIdentifier, messageId, commentId, fileNo):
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], "aaa.jpg")
+    return send_file(file_path, as_attachment=True)
 
 
 @app.route('/uploadfiles', methods=['POST'])
