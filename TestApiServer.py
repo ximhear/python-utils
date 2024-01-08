@@ -117,7 +117,7 @@ def send_message(legIdentifier):
         'message': 'success',
         'data': {
             'messageId': random_64bit_int,
-            'createdDate': timestamp
+            'createdDate': timestamp * 1000
         }
     }
     return jsonify(response)
