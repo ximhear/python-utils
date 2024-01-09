@@ -413,6 +413,26 @@ def upload_files():
     }
     return jsonify(response)
 
+
+@app.route('/eofp/v1/ofp/search', methods=['GET'])
+def search_ofp():
+    data = load_json_data('search-plan.json')
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': data
+    }
+    return jsonify(response)
+
+
+@app.route('/eofp/v1/ofp/add', methods=['POST'])
+def add_flight_plan():
+    response = {
+        'status': 0,
+        'message': 'success',
+    }
+    return jsonify(response)
+
 def load_json_data(filename):
     with open(filename) as file:
         data = json.load(file)
