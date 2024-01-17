@@ -1,0 +1,82 @@
+[
+  {
+    "fltGodt": "2024-01-06 00:00:00",
+    "fltCarr": "OZ",
+    "fltNo": "701",
+    "fltFleg": "S",
+    "fltDepAp": "ICN",
+    "titleId": 1,
+    "contentId": 1,
+    "receiverGroup": "ReceiverGroup",
+    "receiver": "Receiver",
+    "writerGroup": "WriterGroup",
+    "writer": "eofptest05",
+    "content": "{\"request\":\"3\",\"dueTo\":\"1223\"}",
+    "readSys": "N",
+    "readFlag": "N",
+    "createdDate": 1705505720000,
+    "messageFileList": [
+      {
+        "fltGodt": "2024-01-06 00:00:00",
+        "fltCarr": "OZ",
+        "fltNo": "701",
+        "fltFleg": "S",
+        "fltDepAp": "ICN",
+        "titleId": 1,
+        "contentId": 1,
+        "fileNo": 1,
+        "fileUrl": "http://localhost:8080/EOFPServer/messageFile/1/435.jpg",
+        "deleteFlag": "N",
+        "createdDate": 1705505720000,
+        "deleteDate": null
+      },
+      {
+        "fltGodt": "2024-01-06 00:00:00",
+        "fltCarr": "OZ",
+        "fltNo": "701",
+        "fltFleg": "S",
+        "fltDepAp": "ICN",
+        "titleId": 1,
+        "contentId": 1,
+        "fileNo": 2,
+        "fileUrl": "http://localhost:8080/EOFPServer/messageFile/1/ggg435.jpg",
+        "deleteFlag": "N",
+        "createdDate": 1705505720000,
+        "deleteDate": null
+      }
+    ]
+  },
+    {
+      "fltGodt": "2024-01-06 00:00:00",
+      "fltCarr": "OZ",
+      "fltNo": "701",
+      "fltFleg": "S",
+      "fltDepAp": "ICN",
+      "titleId": 1,
+      "contentId": 2,
+      "receiverGroup": "ReceiverGroup",
+      "receiver": "Receiver",
+      "writerGroup": "WriterGroup",
+      "writer": "eofptest06",
+      "content": "Hello",
+      "readSys": "N",
+      "readFlag": "N",
+      "createdDate": 1705505780000,
+      "messageFileList": [
+        {
+          "fltGodt": "2024-01-06 00:00:00",
+          "fltCarr": "OZ",
+          "fltNo": "701",
+          "fltFleg": "S",
+          "fltDepAp": "ICN",
+          "titleId": 1,
+          "contentId": 2,
+          "fileNo": 2,
+          "fileUrl": "http://localhost:8080/EOFPServer/messageFile/1/ggg435.pdf",
+          "deleteFlag": "N",
+          "createdDate": 1705505780000,
+          "deleteDate": null
+        }
+      ]
+    }
+]

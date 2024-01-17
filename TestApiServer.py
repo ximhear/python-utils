@@ -116,7 +116,8 @@ def send_message(legIdentifier):
         'status': 0,
         'message': 'success',
         'data': {
-            'messageId': random_64bit_int,
+            'titleId': random_64bit_int,
+            'contentId': random_64bit_int + 1,
             'createdDate': timestamp * 1000
         }
     }
@@ -126,7 +127,7 @@ def send_message(legIdentifier):
 @app.route('/eofp/v1/ofp/<legIdentifier>/messageattaches', methods=['POST'])
 def send_message_with_files(legIdentifier):
     # JSON 데이터 접근
-    json_data = request.form.get('json')
+    json_data = request.form.get('messageInfo')
     if json_data:
         # 로그 기록
         app.logger.info(f'Received JSON data: {json_data}')
@@ -134,7 +135,7 @@ def send_message_with_files(legIdentifier):
         # data = json.loads(json_data)
 
     # 여러 파일 데이터 접근
-    files = request.files.getlist('file')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
+    files = request.files.getlist('files')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
 
     if not files or files[0].filename == '':
         return jsonify({
@@ -174,7 +175,8 @@ def send_message_with_files(legIdentifier):
         'status': 0,
         'message': 'success',
         'data': {
-            'messageId': random_64bit_int,
+            'titleId': random_64bit_int,
+            'contentId': random_64bit_int + 1,
             'createdDate': timestamp,
             'messageFiles': messageFiles
         }
@@ -182,11 +184,11 @@ def send_message_with_files(legIdentifier):
     return jsonify(response)
 
 
-@app.route('/eofp/v1/ofp/<legIdentifier>/comment', methods=['GET'])
-def get_comments(legIdentifier):
+@app.route('/eofp/v1/ofp/<legIdentifier>/content', methods=['GET'])
+def get_contents(legIdentifier):
     messageId = request.args.get('messageId', default=None, type=str)
     app.logger.info(f'Received category: {messageId}')
-    data = load_json_data('comments.json')
+    data = load_json_data('contents.json')
     response = {
         'status': 0,
         'message': 'success',
@@ -240,7 +242,7 @@ def download_message_file(legIdentifier, messageId, fileNo):
     return send_file(file_path, as_attachment=True)
 
 
-@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/comment', methods=['POST'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/content', methods=['POST'])
 def send_comment(legIdentifier, messageId):
     data = request.json
     app.logger.info(f'Received data: {data}')
@@ -256,17 +258,17 @@ def send_comment(legIdentifier, messageId):
         'status': 0,
         'message': 'success',
         'data': {
-            'commentId': random_64bit_int,
+            'contentId': random_64bit_int,
             'createdDate': timestamp
         }
     }
     return jsonify(response)
 
 
-@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/commentattaches', methods=['POST'])
+@app.route('/eofp/v1/ofp/<legIdentifier>/message/<messageId>/contentattaches', methods=['POST'])
 def send_comment_with_file(legIdentifier, messageId):
     # JSON 데이터 접근
-    json_data = request.form.get('json')
+    json_data = request.form.get('contentInfo')
     if json_data:
         # 로그 기록
         app.logger.info(f'Received JSON data: {json_data}')
@@ -274,7 +276,7 @@ def send_comment_with_file(legIdentifier, messageId):
         # data = json.loads(json_data)
 
     # 여러 파일 데이터 접근
-    files = request.files.getlist('file')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
+    files = request.files.getlist('files')  # 'file'은 여기서 클라이언트가 파일을 보내는 필드명입니다.
 
     if not files or files[0].filename == '':
         return jsonify({
@@ -314,9 +316,9 @@ def send_comment_with_file(legIdentifier, messageId):
         'status': 0,
         'message': 'success',
         'data': {
-            'commentId': random_64bit_int,
+            'contentId': random_64bit_int,
             'createdDate': timestamp,
-            'commentFiles': commentFiles
+            'contentFiles': commentFiles
         }
     }
     return jsonify(response)
