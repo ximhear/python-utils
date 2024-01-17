@@ -433,6 +433,19 @@ def add_flight_plan():
     }
     return jsonify(response)
 
+
+@app.route('/eofp/v1/code/actype', methods=['GET'])
+def get_aircraft_types():
+    response = {
+        'status': 0,
+        'message': 'success',
+        'data': {
+            'code': ["320", "321", "32Q", "333", "359", "388", "744", "74Y", "763", "76Y", "77L"]
+        }
+    }
+    return jsonify(response)
+
+
 def load_json_data(filename):
     with open(filename) as file:
         data = json.load(file)

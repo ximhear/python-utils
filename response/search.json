@@ -20,7 +20,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       },
       {
          "godt":"2024-01-05",
@@ -40,7 +41,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       },
       {
          "godt":"2024-01-05",
@@ -60,7 +62,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       },
       {
          "godt":"2024-01-05",
@@ -80,7 +83,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       },
       {
          "godt":"2024-01-05",
@@ -100,7 +104,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       },
       {
          "godt":"2024-01-05",
@@ -120,7 +125,8 @@
          "ofpNo":null,
          "paxCgo":"PAX",
          "natc":"DPR",
-         "idkb":"D"
+         "idkb":"D",
+         "fpkb":"P"
       }
    ]
 }
