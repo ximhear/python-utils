@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JWT Decoder</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsrsasign/lib/jsrsasign-all-min.js"></script>
+</head>
+
+<body>
+    <h1>JWT Decoder</h1>
+    <label for="jwtInput">Enter JWT Token:</label>
+    <input type="text" id="jwtInput" style="width: 80%;" />
+    <button onclick="decodeJWT()">Decode</button>
+    <h2>Entered JWT Token</h2>
+    <pre id="enteredToken"></pre>
+    <h2>Decoded Header</h2>
+    <pre id="decodedHeader"></pre>
+    <h2>Decoded Payload</h2>
+    <pre id="decodedPayload"></pre>
+    <h2>Expiration Time</h2>
+    <pre id="expTime"></pre>
+
+<script>
+    function formatDateTime(date, isUTC = false) {
+        const pad = (num) => (num < 10 ? '0' + num : num);
+        const year = isUTC ? date.getUTCFullYear() : date.getFullYear();
+        const month = pad(isUTC ? date.getUTCMonth() + 1 : date.getMonth() + 1);
+        const day = pad(isUTC ? date.getUTCDate() : date.getDate());
+        const hours = pad(isUTC ? date.getUTCHours() : date.getHours());
+        const minutes = pad(isUTC ? date.getUTCMinutes() : date.getMinutes());
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    }
+
+    function chunkSubstr(str, size) {
+        const numChunks = Math.ceil(str.length / size);
+        const chunks = new Array(numChunks);
+
+        for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
+            chunks[i] = str.substr(o, size);
+        }
+
+        return chunks.join('\n');
+    }
+
+    function decodeJWT() {
+        var token = document.getElementById('jwtInput').value;
+        var formattedToken = chunkSubstr(token, 120);
+        document.getElementById('enteredToken').textContent = formattedToken;
+
+        try {
+            var tokenParts = token.split(".");
+            var decodedHeader = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(tokenParts[0]));
+            var decodedPayload = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(tokenParts[1]));
+
+            document.getElementById('decodedHeader').textContent = JSON.stringify(decodedHeader, null, 2);
+            document.getElementById('decodedPayload').textContent = JSON.stringify(decodedPayload, null, 2);
+
+            if (decodedPayload.exp) {
+                var expDate = new Date(decodedPayload.exp * 1000);
+
+                // Format UTC time
+                var expDateUTCFormatted = formatDateTime(expDate, true) + ' UTC';
+
+                // Format local time
+                var expDateLocalFormatted = formatDateTime(expDate) + ' Local';
+
+                document.getElementById('expTime').textContent = expDateUTCFormatted + "\n" + expDateLocalFormatted;
+            } else {
+                document.getElementById('expTime').textContent = "Expiration time not found in token.";
+            }
+        } catch (e) {
+            document.getElementById('decodedHeader').textContent = "Invalid token.";
+            document.getElementById('decodedPayload').textContent = "Invalid token.";
+            document.getElementById('expTime').textContent = "";
+        }
+    }
+</script>
+
+</body>
+
+</html>
